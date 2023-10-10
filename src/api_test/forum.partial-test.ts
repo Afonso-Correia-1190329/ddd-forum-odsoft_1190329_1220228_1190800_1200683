@@ -30,6 +30,7 @@ describe("Posts endpoint", (): void => {
     expect(response.status).toBe(200);
     
     expect(response.data.posts).toBeDefined();
+    expect(response.data.posts.length).toBeLessThanOrEqual(5);
   });
 });
 
