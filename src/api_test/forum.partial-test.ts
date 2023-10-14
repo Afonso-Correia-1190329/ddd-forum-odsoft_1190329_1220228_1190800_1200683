@@ -31,6 +31,13 @@ describe("Posts endpoint", (): void => {
     
     expect(response.data.posts).toBeDefined();
   });
+
+  it("Get recent posts", async (): Promise<void> => {
+    const response = await posts.getRecentPosts();
+    expect(response.status).toBe(200);
+    
+    expect(response.data.posts).toBeDefined();
+  });
 });
 
 export default {};
