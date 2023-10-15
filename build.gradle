@@ -26,3 +26,14 @@ task build(type: NpxTask) {
     println "Build Completed"
   }
 }
+
+task generateDocumentation(type: NpxTask) {
+  doFirst{
+    println "Generating Documentation..."
+
+    delete "tsdoc"
+  }
+
+  command = 'typedoc'
+  args = ['./src']
+}
