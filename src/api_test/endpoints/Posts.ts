@@ -15,4 +15,8 @@ export default class Posts extends AEndpoint {
   public async getPopularPosts(): Promise<AxiosResponse> {
     return this.restClient.sendGet({ route: "/popular" });
   }
+
+  public async getRecentPosts(): Promise<AxiosResponse> {
+    return this.restClient.sendGet({ route: "/recent" });
+  }
 }
