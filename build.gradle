@@ -8,6 +8,8 @@ node {
   download = true
 }
 
+// Build Task
+
 task build(type: NpxTask) {
   doFirst{
     println "Building..."
@@ -17,15 +19,13 @@ task build(type: NpxTask) {
 
   dependsOn npmInstall
   command = 'tsc'
-  inputs.files('package.json', 'package-lock.json', 'nodemon.json', 'tsconfig.json', 'tsconfig.app.json')
-  inputs.dir('src')
-  inputs.dir(fileTree("node_modules").exclude(".cache"))
-  outputs.dir('dist')
 
   doLast{
     println "Build Completed"
   }
 }
+
+// Generate Documentation
 
 task generateDocumentation(type: NpxTask) {
   doFirst{
@@ -36,4 +36,119 @@ task generateDocumentation(type: NpxTask) {
 
   command = 'typedoc'
   args = ['./src']
+  
+// Run Unit Tests Task
+
+task runUnitTests(type: NpxTask) {
+  doFirst{
+    println "Running Unit Tests..."
+  }
+
+  command = 'jest'
+  args = ["--testPathIgnorePatterns=api"]
+}
+
+// Run Unit Tests With Coverage Task
+
+task generateUnitTestsCoverageReport(type: NpxTask) {
+  doFirst{
+    println "Running Unit Tests..."
+  }
+
+  command = 'jest'
+  args = [
+    "--coverage",
+    "--coverageReporters=\"text\"",
+    "--coverageReporters=\"html\"",
+    "--coverageReporters=\"json\"",
+    "--testPathIgnorePatterns=api"
+  ]
+
+  doLast{
+    println "Generated Code Coverage report"
+  }
+}
+
+// Run API tests
+
+task deleteDevDb(type: NodeTask) {
+  doFirst{
+    println "Deleting Dev DB..."
+  }
+
+  environment = ['NODE_ENV': 'development']
+  script = file('scripts/db/delete.js')
+}
+
+task createDevDb(type: NodeTask) {
+  doFirst{
+    println "Creating Dev DB..."
+  }
+
+  environment = ['NODE_ENV': 'development']
+  script = file('scripts/db/create.js')
+}
+
+task migrateDevDb(type: NpxTask) {
+  doFirst{
+    println "Migrating Dev DB..."
+  }
+
+  dependsOn build
+  
+  // Get All env vars from .env
+  def map = [:]
+  file('.env').readLines().each() {
+    if (!it.isEmpty() && !it.startsWith("#")) {
+      def pos = it.indexOf("=")
+      def key = it.substring(0, pos)
+      def value = it.substring(pos + 1)
+
+      if (!value.isEmpty()) {
+        map[key] = value
+      }
+    }
+  }
+  map["NODE_ENV"] = 'development'
+
+  environment = map
+
+  command = 'sequelize'
+  args = ["db:migrate"]
+}
+
+task runAPITests(type: NpxTask) {
+  doFirst{
+    println "Running API Tests..."
+  }
+
+  createDevDb.mustRunAfter deleteDevDb
+  migrateDevDb.mustRunAfter createDevDb
+  dependsOn deleteDevDb, createDevDb, migrateDevDb
+
+  command = 'jest'
+  args = [
+    "--runInBand",
+    "--testPathPattern=api"
+  ]
+}
+
+// Run API tests With Coverage Task
+
+task generateAPITestsCoverageReport(type: NpxTask) {
+  doFirst{
+    println "Running API Tests..."
+  }
+
+  createDevDb.mustRunAfter deleteDevDb
+  migrateDevDb.mustRunAfter createDevDb
+  dependsOn deleteDevDb, createDevDb, migrateDevDb
+
+  command = 'jest'
+  args = [
+    "--coverage",
+    "--coverageReporters=\"html\"",
+    "--runInBand",
+    "--testPathPattern=api"
+  ]
 }
