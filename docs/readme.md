@@ -1,5 +1,9 @@
 # ODSOFT Template Project
 
+## TSDoc Documentation
+
+[TSDocs](./tsdoc/readme.md)
+
 ## How to generate the svg files
 
 These templates use [PlantUML](https://plantuml.com) to generate the diagrams that are displayed in the readme. You may use any tool you choose.
