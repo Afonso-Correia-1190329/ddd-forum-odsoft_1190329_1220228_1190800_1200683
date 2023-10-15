@@ -36,7 +36,8 @@ task generateDocumentation(type: NpxTask) {
 
   command = 'typedoc'
   args = ['./src']
-  
+}
+
 // Run Unit Tests Task
 
 task runUnitTests(type: NpxTask) {
