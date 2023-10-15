@@ -47,6 +47,7 @@
   },
   "homepage": "https://github.com/stemmlerjs/ddd-forum#readme",
   "dependencies": {
+    "@microsoft/tsdoc": "^0.14.2",
     "@types/express": "^4.17.1",
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.141",
@@ -86,15 +87,17 @@
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "tslog": "3.2.2",
-    "typescript": "^3.6.3",
+    "typescript": "^4.2.4",
     "validator": "^11.1.0",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
     "concurrently": "^5.0.0",
     "dotenv-cli": "^5.1.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
     "husky": "^4.2.3",
-    "jest-html-reporter": "^3.0.0"
+    "jest-html-reporter": "^3.0.0",
+    "typedoc": "^0.20.37"
   },
   "jest": {
     "testEnvironment": "node",

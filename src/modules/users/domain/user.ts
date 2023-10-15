@@ -12,6 +12,11 @@ import { Result } from "../../../shared/core/Result";
 import { Guard } from "../../../shared/core/Guard";
 import { AggregateRoot } from "../../../shared/domain/AggregateRoot";
 
+/**
+ * @namespace User
+ */
+
+
 interface UserProps {
   email: UserEmail;
   username: UserName;
@@ -23,7 +28,15 @@ interface UserProps {
   isDeleted?: boolean;
   lastLogin?: Date;
 }
+/**
+ * @desc User aggregate root
+ * 
+ */
 
+/**
+ * this is a doc for user
+ * @module User
+ */
 export class User extends AggregateRoot<UserProps> {
 
   get userId (): UserId {
@@ -70,7 +83,14 @@ export class User extends AggregateRoot<UserProps> {
   public isLoggedIn (): boolean {
     return !!this.props.accessToken && !!this.props.refreshToken
   }
-
+/**
+ *  sets access token
+ * @remarks sets access token and refresh token
+ * @param token  JWTToken
+ * @param refreshToken  RefreshToken
+ * @returns void
+ * @memberof User
+ */
   public setAccessToken (token: JWTToken, refreshToken: RefreshToken): void {
     this.addDomainEvent(new UserLoggedIn(this));
     this.props.accessToken = token;
