@@ -3,13 +3,14 @@
 npm-debug.log
 .DS_Store
 /templates
+
 # Local Netlify folder
 .netlify
 /dist
 /coverage
 report.html
+/tsdoc
 
 # Gradle
 /.gradle
-/build
  
