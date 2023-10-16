@@ -1,0 +1,29 @@
+DOC_TYPE="$1"
+
+if [ -z "$DOC_TYPE" ]; then
+    echo "Need to provide DOC_TYPE as input (unit_coverage/api_coverage)"
+    exit 1
+fi
+
+if [ "$DOC_TYPE" != "unit_coverage" ] && [ "$DOC_TYPE" != "api_coverage" ]; then
+    echo "Invalid DOC_TYPE value (unit_coverage/api_coverage)"
+    exit 1
+fi
+
+TIMESTAMP=$(date +%s)
+DESTINATION=docs/$DOC_TYPE/$TIMESTAMP
+
+# Copy artifacts to destination folder
+mkdir -p $DESTINATION
+cp -r coverage/* $DESTINATION
+
+# Add entry on readme file
+printf "\n[Report from timestamp: $TIMESTAMP](./$TIMESTAMP/index.html)\n" >> docs/$DOC_TYPE/readme.md
+
+git checkout master
+
+git add docs/$DOC_TYPE/*
+
+git commit -m "[JENKINS] - Publishing New Coverage Report At $DESTINATION"
+
+git push

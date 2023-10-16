@@ -1,11 +1,14 @@
-DESTINATION=docs/tsdoc/$(date +%s)
+TIMESTAMP=$(date +%s)
+DESTINATION=docs/tsdoc/$TIMESTAMP
 
 # Copy artifacts to destination folder
 mkdir -p $DESTINATION
 cp -r tsdoc/* $DESTINATION
 
 # Add entry on readme file
-printf "\n[Report from timestamp: 1697408068](./1697408068/index.html)\n" >> docs/tsdoc/readme.md
+printf "\n[Report from timestamp: $TIMESTAMP](./$TIMESTAMP/index.html)\n" >> docs/tsdoc/readme.md
+
+git checkout master
 
 git add docs/tsdoc/*
 

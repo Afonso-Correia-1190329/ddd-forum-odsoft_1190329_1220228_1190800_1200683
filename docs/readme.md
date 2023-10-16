@@ -4,6 +4,14 @@
 
 [TSDocs](./tsdoc/readme.md)
 
+## Unit Test Coverage Report
+
+[Unit Tests](./unit_coverage/readme.md)
+
+## API Test Coverage Report
+
+[API Tests](./api_coverage/readme.md)
+
 ## How to generate the svg files
 
 These templates use [PlantUML](https://plantuml.com) to generate the diagrams that are displayed in the readme. You may use any tool you choose.
