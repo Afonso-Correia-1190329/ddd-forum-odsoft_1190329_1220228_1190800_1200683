@@ -15,10 +15,10 @@ robocopy tsdoc %DESTINATION% /E > NUL
 
 @REM # Add entry on readme file
 echo. >> docs/tsdoc/readme.md
-echo "[Report from timestamp: 1697408068](./1697408068/index.html)" >> docs/tsdoc/readme.md
+echo [Report from timestamp: 1697408068](./1697408068/index.html) >> docs/tsdoc/readme.md
 
-git add docs/tsdoc/*
+git add docs/tsdoc/* >nul 2>&1
 
-git commit -m "[JENKINS] - Publishing New TSDoc At %DESTINATION%"
+git commit -m "[JENKINS] - Publishing New TSDoc At %DESTINATION%" >nul 2>&1
 
-git push
+git push >nul 2>&1
