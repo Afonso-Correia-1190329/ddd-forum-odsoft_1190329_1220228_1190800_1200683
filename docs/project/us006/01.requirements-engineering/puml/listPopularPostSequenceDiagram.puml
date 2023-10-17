@@ -1,0 +1,18 @@
+@startuml ListPopularPosts
+actor User as User
+participant Frontend as FE
+participant Backend as BE
+database Database as DB
+User -> FE : POST: Login
+FE -> BE : Authentication Request
+BE -> DB : Check User Input Data
+BE <-- DB : User Validated
+FE <-- BE : Authentication Response
+User <-- FE : Login Successful
+User -> FE : GET: ListPopularPosts
+FE -> BE : GET Popular Posts
+BE -> DB : SELECT 5 First Posts Ordered by Popularity
+BE <-- DB : RETURNS 5 First Posts Ordered by Popularity
+FE <-- BE : RETURNS Popular Posts
+User <-- FE : Returns Popular Posts Listed
+@enduml
