@@ -11,16 +11,16 @@ set "DESTINATION=docs\tsdoc\%UNIX_TIMESTAMP%"
 
 @REM # Copy artifacts to destination folder
 mkdir %DESTINATION%
-robocopy tsdoc %DESTINATION% /E > NUL
+robocopy tsdoc %DESTINATION% /E
 
 @REM # Add entry on readme file
 echo. >> docs/tsdoc/readme.md
 echo [Report from timestamp: %UNIX_TIMESTAMP%](./%UNIX_TIMESTAMP%/index.html) >> docs/tsdoc/readme.md
 
-git checkout master >nul 2>&1
+git checkout master
 
-git add docs/tsdoc/* >nul 2>&1
+git add docs/tsdoc/*
 
-git commit -m "[JENKINS] - Publishing New TSDoc At %DESTINATION%" >nul 2>&1
+git commit -m "[JENKINS] - Publishing New TSDoc At %DESTINATION%"
 
-git push >nul 2>&1
+git push

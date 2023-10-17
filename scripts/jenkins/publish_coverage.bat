@@ -25,16 +25,16 @@ set "DESTINATION=docs\%DOC_TYPE%\%UNIX_TIMESTAMP%"
 
 @REM # Copy artifacts to destination folder
 mkdir %DESTINATION%
-robocopy coverage %DESTINATION% /E > NUL
+robocopy coverage %DESTINATION% /E
 
 @REM # Add entry on readme file
 echo. >> docs/%DOC_TYPE%/readme.md
 echo [Report from timestamp: %UNIX_TIMESTAMP%](./%UNIX_TIMESTAMP%/index.html) >> docs/%DOC_TYPE%/readme.md
 
-git checkout master >nul 2>&1
+git checkout master
 
-git add docs/%DOC_TYPE%/* >nul 2>&1
+git add docs/%DOC_TYPE%/*
 
-git commit -m "[JENKINS] - Publishing New Coverage Report At %DESTINATION%" >nul 2>&1
+git commit -m "[JENKINS] - Publishing New Coverage Report At %DESTINATION%"
 
-git push >nul 2>&1
+git push
