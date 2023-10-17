@@ -56,8 +56,9 @@ was carried out as described in the following table.
 | [US 004] [Goal 3 Testing] - Build Automation using Node.js scripts | [1190329](project/us004/readme.md) |
 | [US 005] [Goal 3 Testing] - Create Build Automation using Gradle + Node.js plugin | [1200613](project/us005/readme.md) |
 | [US 006] [Goal 4 Development] - Implement changes to the application - Popular Posts Listing | [1220228](project/us006/readme.md) |
+| [US 006] [Goal 4 Development] - Document the files where changes were made (PlantUML + JSDoc) - Popular Posts Listing | [1220228](project/us006/readme.md) |
+| [US 006] [Goal 4 Development] - Develop tests (Unit + API Tests) (Backend only) - Popular Posts Listing | [1220228](project/us006/readme.md) |
 | [US 007] [Goal 4 Development] - Implement changes to the application - New Posts Listing | [1190800](project/us007/readme.md) |
-| [US 008] [Goal 4 Development] - Document the files where changes were made (PlantUML + JSDoc) - Popular Posts Listing | [1220228](project/us008/readme.md) |
-| [US 009] [Goal 4 Development] - Document the files where changes were made (PlantUML + JSDoc) - New Posts Listing | [1190800](project/us009/readme.md) |
-| [US 010] [Goal 4 Development] - Develop tests (Unit + API Tests) (Backend only) - Popular Posts Listing | [1220228](project/us010/readme.md) |
-| [US 012] [Goal 5 Continuous Integration] - Continuous Integration (CI) w/ Jenkins | [1190329](project/us012/readme.md) |
+| [US 007] [Goal 4 Development] - Document the files where changes were made (PlantUML + JSDoc) - New Posts Listing | [1190800](project/us007/readme.md) |
+| [US 007] [Goal 4 Development] - Develop tests (Unit + API Tests) (Backend only) - New Posts Listing | [1190800](project/us007/readme.md) |
+| [US 008] [Goal 5 Continuous Integration] - Continuous Integration (CI) w/ Jenkins | [1190329](project/us008/readme.md) |
