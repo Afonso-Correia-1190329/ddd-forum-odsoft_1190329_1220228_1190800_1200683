@@ -1,6 +1,7 @@
 @echo off
 
 git restore .
+git pull
 git checkout master
 
 @REM Get timestamp

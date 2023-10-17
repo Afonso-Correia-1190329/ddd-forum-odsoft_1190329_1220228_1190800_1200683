@@ -1,4 +1,5 @@
 git restore .
+git pull
 git checkout master
 
 DOC_TYPE="$1"
