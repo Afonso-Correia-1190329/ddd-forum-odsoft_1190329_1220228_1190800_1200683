@@ -1,7 +1,7 @@
 @echo off
 
 git restore .
-git switch -c docs --track origin/docs
+git checkout master
 
 @REM Get timestamp
 for /f %%x in ('wmic path win32_utctime get /format:list ^| findstr "="') do (
@@ -25,6 +25,3 @@ git add docs/tsdoc/*
 git commit -m "[JENKINS] - Publishing New TSDoc At %DESTINATION%"
 
 git push
-
-git checkout master
-git branch --delete docs 

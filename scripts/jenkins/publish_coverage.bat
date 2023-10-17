@@ -1,7 +1,7 @@
 @echo off
 
 git restore .
-git switch -c docs --track origin/docs
+git checkout master
 
 set DOC_TYPE=%1
 
@@ -39,6 +39,3 @@ git add docs/%DOC_TYPE%/*
 git commit -m "[JENKINS] - Publishing New Coverage Report At %DESTINATION%"
 
 git push
-
-git checkout master
-git branch --delete docs 
