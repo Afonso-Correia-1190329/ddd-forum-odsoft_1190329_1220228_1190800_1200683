@@ -1,5 +1,8 @@
 @echo off
 
+git restore .
+git switch -c docs --track origin/docs
+
 @REM Get timestamp
 for /f %%x in ('wmic path win32_utctime get /format:list ^| findstr "="') do (
     set %%x)
@@ -17,10 +20,11 @@ robocopy tsdoc %DESTINATION% /E
 echo. >> docs/tsdoc/readme.md
 echo [Report from timestamp: %UNIX_TIMESTAMP%](./%UNIX_TIMESTAMP%/index.html) >> docs/tsdoc/readme.md
 
-git checkout master
-
 git add docs/tsdoc/*
 
 git commit -m "[JENKINS] - Publishing New TSDoc At %DESTINATION%"
 
 git push
+
+git checkout master
+git branch --delete docs 

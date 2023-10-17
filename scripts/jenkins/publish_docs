@@ -1,3 +1,6 @@
+git restore .
+git switch -c docs --track origin/docs
+
 TIMESTAMP=$(date +%s)
 DESTINATION=docs/tsdoc/$TIMESTAMP
 
@@ -8,10 +11,11 @@ cp -r tsdoc/* $DESTINATION
 # Add entry on readme file
 printf "\n[Report from timestamp: $TIMESTAMP](./$TIMESTAMP/index.html)\n" >> docs/tsdoc/readme.md
 
-git checkout master
-
 git add docs/tsdoc/*
 
 git commit -m "[JENKINS] - Publishing New TSDoc At $DESTINATION"
 
 git push
+
+git checkout master
+git branch --delete docs

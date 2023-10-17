@@ -1,5 +1,8 @@
 @echo off
 
+git restore .
+git switch -c docs --track origin/docs
+
 set DOC_TYPE=%1
 
 if "%DOC_TYPE%"=="" (
@@ -31,10 +34,11 @@ robocopy coverage %DESTINATION% /E
 echo. >> docs/%DOC_TYPE%/readme.md
 echo [Report from timestamp: %UNIX_TIMESTAMP%](./%UNIX_TIMESTAMP%/index.html) >> docs/%DOC_TYPE%/readme.md
 
-git checkout master
-
 git add docs/%DOC_TYPE%/*
 
 git commit -m "[JENKINS] - Publishing New Coverage Report At %DESTINATION%"
 
 git push
+
+git checkout master
+git branch --delete docs 

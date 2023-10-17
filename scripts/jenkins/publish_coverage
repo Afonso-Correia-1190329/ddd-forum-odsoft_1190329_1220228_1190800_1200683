@@ -1,3 +1,6 @@
+git restore .
+git switch -c docs --track origin/docs
+
 DOC_TYPE="$1"
 
 if [ -z "$DOC_TYPE" ]; then
@@ -20,10 +23,11 @@ cp -r coverage/* $DESTINATION
 # Add entry on readme file
 printf "\n[Report from timestamp: $TIMESTAMP](./$TIMESTAMP/index.html)\n" >> docs/$DOC_TYPE/readme.md
 
-git checkout master
-
 git add docs/$DOC_TYPE/*
 
 git commit -m "[JENKINS] - Publishing New Coverage Report At $DESTINATION"
 
 git push
+
+git checkout master
+git branch --delete docs
