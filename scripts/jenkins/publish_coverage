@@ -1,6 +1,6 @@
 git restore .
-git pull
 git checkout master
+git pull
 
 DOC_TYPE="$1"
 

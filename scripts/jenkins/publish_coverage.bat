@@ -1,8 +1,8 @@
 @echo off
 
 git restore .
-git pull
 git checkout master
+git pull
 
 set DOC_TYPE=%1
 

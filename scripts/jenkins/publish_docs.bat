@@ -1,8 +1,8 @@
 @echo off
 
 git restore .
-git pull
 git checkout master
+git pull
 
 @REM Get timestamp
 for /f %%x in ('wmic path win32_utctime get /format:list ^| findstr "="') do (

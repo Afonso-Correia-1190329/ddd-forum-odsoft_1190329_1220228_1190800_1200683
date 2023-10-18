@@ -1,6 +1,6 @@
 git restore .
-git pull
 git checkout master
+git pull
 
 TIMESTAMP=$(date +%s)
 DESTINATION=docs/tsdoc/$TIMESTAMP
