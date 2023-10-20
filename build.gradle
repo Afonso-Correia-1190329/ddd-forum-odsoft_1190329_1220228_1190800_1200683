@@ -155,6 +155,20 @@ task generateAPITestsCoverageReport(type: NpxTask) {
   ]
 }
 
+task generateAPITestsCoverageReportWithoutDbReset(type: NpxTask) {
+  doFirst{
+    println "Running API Tests..."
+  }
+
+  command = 'jest'
+  args = [
+    "--coverage",
+    "--coverageReporters=\"html\"",
+    "--runInBand",
+    "--testPathPattern=api"
+  ]
+}
+
 // Do health checks
 
 task healthChecks(type: NodeTask) {
