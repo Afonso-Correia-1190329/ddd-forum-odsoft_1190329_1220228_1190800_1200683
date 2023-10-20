@@ -154,3 +154,13 @@ task generateAPITestsCoverageReport(type: NpxTask) {
     "--testPathPattern=api"
   ]
 }
+
+// Do health checks
+
+task healthChecks(type: NodeTask) {
+  doFirst{
+    println "Running health checks..."
+  }
+
+  script = file('scripts/jenkins/health_check.js')
+}
