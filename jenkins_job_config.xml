@@ -1,0 +1,148 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>DDD Forum Project</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@5.2.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/Afonso-Correia-1190329/ddd-forum-odsoft_1190329_1220228_1190800_1200683.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="empty-list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.xshell.XShellBuilder plugin="xshell@203.v80a_c62d7886f">
+      <commandLine>scripts/jenkins/copy_env_file</commandLine>
+      <workingDir></workingDir>
+      <executeFromWorkingDir>false</executeFromWorkingDir>
+      <regexToKill></regexToKill>
+      <timeAllocated></timeAllocated>
+    </hudson.plugins.xshell.XShellBuilder>
+    <hudson.plugins.gradle.Gradle plugin="gradle@2.8.2">
+      <switches></switches>
+      <tasks>build</tasks>
+      <rootBuildScriptDir></rootBuildScriptDir>
+      <buildFile></buildFile>
+      <gradleName>Gradle 8.4</gradleName>
+      <useWrapper>false</useWrapper>
+      <makeExecutable>false</makeExecutable>
+      <useWorkspaceAsHome>false</useWorkspaceAsHome>
+      <wrapperLocation></wrapperLocation>
+      <passAllAsSystemProperties>false</passAllAsSystemProperties>
+      <projectProperties></projectProperties>
+      <passAllAsProjectProperties>false</passAllAsProjectProperties>
+    </hudson.plugins.gradle.Gradle>
+    <hudson.plugins.gradle.Gradle plugin="gradle@2.8.2">
+      <switches></switches>
+      <tasks>generateDocumentation</tasks>
+      <rootBuildScriptDir></rootBuildScriptDir>
+      <buildFile></buildFile>
+      <gradleName>Gradle 8.4</gradleName>
+      <useWrapper>false</useWrapper>
+      <makeExecutable>false</makeExecutable>
+      <useWorkspaceAsHome>false</useWorkspaceAsHome>
+      <wrapperLocation></wrapperLocation>
+      <passAllAsSystemProperties>false</passAllAsSystemProperties>
+      <projectProperties></projectProperties>
+      <passAllAsProjectProperties>false</passAllAsProjectProperties>
+    </hudson.plugins.gradle.Gradle>
+    <hudson.plugins.xshell.XShellBuilder plugin="xshell@203.v80a_c62d7886f">
+      <commandLine>scripts/jenkins/publish_docs</commandLine>
+      <workingDir></workingDir>
+      <executeFromWorkingDir>false</executeFromWorkingDir>
+      <regexToKill></regexToKill>
+      <timeAllocated></timeAllocated>
+    </hudson.plugins.xshell.XShellBuilder>
+    <hudson.plugins.gradle.Gradle plugin="gradle@2.8.2">
+      <switches></switches>
+      <tasks>generateUnitTestsCoverageReport</tasks>
+      <rootBuildScriptDir></rootBuildScriptDir>
+      <buildFile></buildFile>
+      <gradleName>Gradle 8.4</gradleName>
+      <useWrapper>false</useWrapper>
+      <makeExecutable>false</makeExecutable>
+      <useWorkspaceAsHome>false</useWorkspaceAsHome>
+      <wrapperLocation></wrapperLocation>
+      <passAllAsSystemProperties>false</passAllAsSystemProperties>
+      <projectProperties></projectProperties>
+      <passAllAsProjectProperties>false</passAllAsProjectProperties>
+    </hudson.plugins.gradle.Gradle>
+    <hudson.plugins.xshell.XShellBuilder plugin="xshell@203.v80a_c62d7886f">
+      <commandLine>scripts/jenkins/publish_coverage unit_coverage</commandLine>
+      <workingDir></workingDir>
+      <executeFromWorkingDir>false</executeFromWorkingDir>
+      <regexToKill></regexToKill>
+      <timeAllocated></timeAllocated>
+    </hudson.plugins.xshell.XShellBuilder>
+    <hudson.plugins.xshell.XShellBuilder plugin="xshell@203.v80a_c62d7886f">
+      <commandLine>docker compose -f .\docker-compose2.yml build</commandLine>
+      <workingDir></workingDir>
+      <executeFromWorkingDir>false</executeFromWorkingDir>
+      <regexToKill></regexToKill>
+      <timeAllocated></timeAllocated>
+    </hudson.plugins.xshell.XShellBuilder>
+    <jenkins.plugins.docker__compose.DockerComposeBuilder plugin="docker-compose-build-step@1.0">
+      <useCustomDockerComposeFile>true</useCustomDockerComposeFile>
+      <dockerComposeFile>docker-compose2.yml</dockerComposeFile>
+      <option class="jenkins.plugins.docker_compose.StartAllServices"/>
+    </jenkins.plugins.docker__compose.DockerComposeBuilder>
+    <hudson.plugins.gradle.Gradle plugin="gradle@2.8.2">
+      <switches></switches>
+      <tasks>healthChecks</tasks>
+      <rootBuildScriptDir></rootBuildScriptDir>
+      <buildFile></buildFile>
+      <gradleName>Gradle 8.4</gradleName>
+      <useWrapper>false</useWrapper>
+      <makeExecutable>false</makeExecutable>
+      <useWorkspaceAsHome>false</useWorkspaceAsHome>
+      <wrapperLocation></wrapperLocation>
+      <passAllAsSystemProperties>false</passAllAsSystemProperties>
+      <projectProperties></projectProperties>
+      <passAllAsProjectProperties>false</passAllAsProjectProperties>
+    </hudson.plugins.gradle.Gradle>
+    <hudson.plugins.gradle.Gradle plugin="gradle@2.8.2">
+      <switches></switches>
+      <tasks>generateAPITestsCoverageReportWithoutDbReset</tasks>
+      <rootBuildScriptDir></rootBuildScriptDir>
+      <buildFile></buildFile>
+      <gradleName>Gradle 8.4</gradleName>
+      <useWrapper>false</useWrapper>
+      <makeExecutable>false</makeExecutable>
+      <useWorkspaceAsHome>false</useWorkspaceAsHome>
+      <wrapperLocation></wrapperLocation>
+      <passAllAsSystemProperties>false</passAllAsSystemProperties>
+      <projectProperties></projectProperties>
+      <passAllAsProjectProperties>false</passAllAsProjectProperties>
+    </hudson.plugins.gradle.Gradle>
+    <hudson.plugins.xshell.XShellBuilder plugin="xshell@203.v80a_c62d7886f">
+      <commandLine>scripts/jenkins/publish_coverage api_coverage</commandLine>
+      <workingDir></workingDir>
+      <executeFromWorkingDir>false</executeFromWorkingDir>
+      <regexToKill></regexToKill>
+      <timeAllocated></timeAllocated>
+    </hudson.plugins.xshell.XShellBuilder>
+    <jenkins.plugins.docker__compose.DockerComposeBuilder plugin="docker-compose-build-step@1.0">
+      <useCustomDockerComposeFile>true</useCustomDockerComposeFile>
+      <dockerComposeFile>docker-compose2.yml</dockerComposeFile>
+      <option class="jenkins.plugins.docker_compose.StopAllServices"/>
+    </jenkins.plugins.docker__compose.DockerComposeBuilder>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
